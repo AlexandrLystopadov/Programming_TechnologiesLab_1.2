@@ -31,10 +31,7 @@ namespace ProgrammingTechnologiesLab_1._2
             {
                 if (reg2.IsMatch(outLine.Text))
                 {
-                    //if (outLine.Text.IndexOf(',', 0, outLine.Text.Length) != -1)
-                    //{
-                    //    outLine.Text = Regex.Replace(outLine.Text, @"\,", ".");
-                    //}
+                    
                 }
                 else
                 {
@@ -59,7 +56,9 @@ namespace ProgrammingTechnologiesLab_1._2
 
         private void plus_Click(object sender, EventArgs e)
         {
-            if(outLine.Text != "")
+            min = double.Parse(minTable.Text);
+            max = double.Parse(maxTable.Text);
+            if (outLine.Text != "")
             {
                 a = double.Parse(outLine.Text);
                 sign = 1;
@@ -70,6 +69,8 @@ namespace ProgrammingTechnologiesLab_1._2
 
         private void minus_Click(object sender, EventArgs e)
         {
+            min = double.Parse(minTable.Text);
+            max = double.Parse(maxTable.Text);
             if (outLine.Text != "")
             {
                 a = double.Parse(outLine.Text);
@@ -81,7 +82,9 @@ namespace ProgrammingTechnologiesLab_1._2
 
         private void multiplication_Click(object sender, EventArgs e)
         {
-            if(outLine.Text != "")
+            min = double.Parse(minTable.Text);
+            max = double.Parse(maxTable.Text);
+            if (outLine.Text != "")
             {
                 a = double.Parse(outLine.Text);
                 sign = 3;
@@ -98,7 +101,9 @@ namespace ProgrammingTechnologiesLab_1._2
 
         private void division_Click(object sender, EventArgs e)
         {
-            if(outLine.Text != "")
+            min = double.Parse(minTable.Text);
+            max = double.Parse(maxTable.Text);
+            if (outLine.Text != "")
             {
                 a = double.Parse(outLine.Text);
                 sign = 4;
@@ -115,15 +120,19 @@ namespace ProgrammingTechnologiesLab_1._2
 
         private void factorial_Click(object sender, EventArgs e)
         {
+           
             int i = 1;
             c = 1;
             if (outLine.Text != "")
             {
                 a = double.Parse(outLine.Text);
-                //if (a > 4000000 || a < -2000000)
-                //{
-                //    MessageBox.Show("Input number among 4.000.000 and -2.000.000!", "Message");
-                //}
+                if(a <= 0)
+                {
+                    c = 0;
+                    MessageBox.Show("Number is negetive or zero!", "Message");
+                    
+                }
+
                 while (i <= a)
                 {
                     c *= i;
@@ -140,15 +149,13 @@ namespace ProgrammingTechnologiesLab_1._2
 
         private void sinus_Click(object sender, EventArgs e)
         {
+            min = double.Parse(minTable.Text);
+            max = double.Parse(maxTable.Text);
             if (outLine.Text != "")
             {
                 a = double.Parse(outLine.Text);
-                //if (a > 4000000 || a < -2000000)
-                //{
-                //    MessageBox.Show("Input number among 4.000.000 and -2.000.000!", "Message");
-                //}
                 c = System.Math.Sin(a * Math.PI / 180);
-                outLine.Text = c.ToString("G1");
+                outLine.Text = c.ToString("F1");
             }
             else
             {
@@ -159,13 +166,17 @@ namespace ProgrammingTechnologiesLab_1._2
 
         private void squareRoot_Click(object sender, EventArgs e)
         {
-            if(outLine.Text != "")
+            if (outLine.Text != "")
             {
                 a = double.Parse(outLine.Text);
                 if(a >= 0)
                 {
-                    c = System.Math.Sqrt(a);
-                    outLine.Text = c.ToString("G1");
+                    c = Math.Round(Math.Sqrt(a), 1);
+                    outLine.Text = c.ToString("F1");
+                }
+                else
+                {
+                    MessageBox.Show("Number is negetive!", "Message");
                 }
             }
             else
@@ -173,6 +184,16 @@ namespace ProgrammingTechnologiesLab_1._2
                 MessageBox.Show("Input number!", "Message");
             }
             outLine.Focus();
+        }
+
+        private void minTable_TextChanged(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void maxTable_TextChanged(object sender, EventArgs e)
+        {
+           
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -243,7 +264,14 @@ namespace ProgrammingTechnologiesLab_1._2
         }
         private void numeralZero_Click(object sender, EventArgs e)
         {
-            outLine.Text += (sender as Button).Text;
+            min = double.Parse(minTable.Text);
+            max = double.Parse(maxTable.Text);
+
+            if(double.Parse(outLine.Text + (sender as Button).Text) >= min && 
+               double.Parse(outLine.Text + (sender as Button).Text) <= max)
+            {
+                outLine.Text += (sender as Button).Text;
+            }
         }
     }
 }

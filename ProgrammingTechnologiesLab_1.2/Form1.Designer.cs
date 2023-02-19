@@ -89,6 +89,7 @@
             this.minTable.TabIndex = 2;
             this.minTable.Text = "-2000000";
             this.minTable.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.minTable.TextChanged += new System.EventHandler(this.minTable_TextChanged);
             // 
             // maxTable
             // 
@@ -99,6 +100,7 @@
             this.maxTable.TabIndex = 3;
             this.maxTable.Text = "4000000";
             this.maxTable.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.maxTable.TextChanged += new System.EventHandler(this.maxTable_TextChanged);
             // 
             // labelMin
             // 
@@ -362,7 +364,7 @@
             this.clearText.Name = "clearText";
             this.clearText.Size = new System.Drawing.Size(205, 60);
             this.clearText.TabIndex = 27;
-            this.clearText.Text = "C";
+            this.clearText.Text = "AC";
             this.clearText.UseVisualStyleBackColor = true;
             this.clearText.Click += new System.EventHandler(this.button21_Click);
             // 
