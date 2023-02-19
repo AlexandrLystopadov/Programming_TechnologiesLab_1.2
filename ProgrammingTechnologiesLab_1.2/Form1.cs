@@ -81,18 +81,36 @@ namespace ProgrammingTechnologiesLab_1._2
 
         private void multiplication_Click(object sender, EventArgs e)
         {
-            a = double.Parse(outLine.Text);
-            sign = 3;
-            outLineUper.Text = outLine.Text + "x";
-            outLine.Clear();
+            if(outLine.Text != "")
+            {
+                a = double.Parse(outLine.Text);
+                sign = 3;
+                outLineUper.Text = outLine.Text + "x";
+                outLine.Clear();
+            }
+            else
+            {
+                MessageBox.Show("Input first number!", "Message");
+            }
+            outLine.Focus();
+
         }
 
         private void division_Click(object sender, EventArgs e)
         {
-            a = double.Parse(outLine.Text);
-            sign = 4;
-            outLineUper.Text = outLine.Text + "/";
-            outLine.Clear();
+            if(outLine.Text != "")
+            {
+                a = double.Parse(outLine.Text);
+                sign = 4;
+                outLineUper.Text = outLine.Text + "/";
+                outLine.Clear();
+            }
+            else
+            {
+                MessageBox.Show("Input first number!", "Message");
+            }
+            outLine.Focus();
+
         }
 
         private void factorial_Click(object sender, EventArgs e)
